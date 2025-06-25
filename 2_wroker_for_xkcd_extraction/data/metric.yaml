@@ -1,0 +1,14 @@
+workers_10:
+  buffer_size: 10
+  jobs: 3106
+  time: 1m35.3807659s
+
+workers_20:
+  buffer_size: 10
+  jobs: 3106
+  time: 26.5977195s
+
+workers_30:
+  buffer_size: 10
+  jobs: 3106
+  time: 27.5977195s
