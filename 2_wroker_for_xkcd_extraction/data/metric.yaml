@@ -12,3 +12,8 @@ workers_30:
   buffer_size: 10
   jobs: 3106
   time: 27.5977195s
+
+workers_40:
+  buffer_size: 10
+  jobs: 3106
+  time: 21.7548343s
