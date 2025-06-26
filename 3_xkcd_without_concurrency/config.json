@@ -1,0 +1,5 @@
+{
+    "n_workers": 30,
+    "n_jobs": 3106,
+    "buffer_size": 10
+}
