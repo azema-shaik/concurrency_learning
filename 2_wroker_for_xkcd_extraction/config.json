@@ -1,5 +1,5 @@
 {
-    "n_workers": 30,
+    "n_workers": 10,
     "n_jobs": 3106,
-    "buffer_size": 10
+    "buffer_size": 4
 }
