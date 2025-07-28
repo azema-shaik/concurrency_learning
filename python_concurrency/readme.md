@@ -61,8 +61,8 @@
         - return `self._result`
 
 
-### <u>Operations happening in `asyncio.Future.add_callbacks`</u>
-- Signature: `add_callbacks(self,fn,*,context = None)`
+### <u>Operations happening in `asyncio.Future.add_done_callbacks`</u>
+- Signature: `add_done_callbacks(self,fn,*,context = None)`
 - Operations happening:
     - **IF** `self._state != PENDING`:
         - <span style="color:pink">SCHEDULES</span> `._loop.call_soon(fn,context = context)`
@@ -70,8 +70,8 @@
         - appends the `fn` to `self._callbacks`
 
 
-### <u>Operations happening in `asyncio.Future.remove_callbacks`</u>
-- Signature: `remove_callback(self, function)`
+### <u>Operations happening in `asyncio.Future.remove_done_callbacks`</u>
+- Signature: `remove_done_callback(self, function)`
 - Operations happening:
     - remove `function` from `self._callbacks`
 
