@@ -1,0 +1,48 @@
+TEST_1:
+  buffer_size: 2
+  consecutoveness: 29.63%
+  jobs: 10000
+  time: 1m6.2884019s
+  workers: 150
+TEST_2:
+  buffer_size: 5
+  consecutoveness: 25.12%
+  jobs: 10000
+  time: 1m6.3125117s
+  workers: 150
+TEST_3:
+  buffer_size: 10
+  consecutoveness: 22.91%
+  jobs: 10000
+  time: 1m6.1794086s
+  workers: 150
+TEST_4:
+  buffer_size: 15
+  consecutoveness: 23.30%
+  jobs: 10000
+  time: 1m6.1628533s
+  workers: 150
+TEST_5:
+  buffer_size: 20
+  consecutoveness: 20.74%
+  jobs: 10000
+  time: 1m6.2821887s
+  workers: 150
+TEST_6:
+  buffer_size: 25
+  consecutoveness: 19.38%
+  jobs: 10000
+  time: 1m6.2052606s
+  workers: 150
+TEST_7:
+  buffer_size: 30
+  consecutoveness: 25.32%
+  jobs: 10000
+  time: 1m6.1815644s
+  workers: 150
+TEST_8:
+  buffer_size: 40
+  consecutoveness: 22.88%
+  jobs: 10000
+  time: 1m6.1516659s
+  workers: 150
