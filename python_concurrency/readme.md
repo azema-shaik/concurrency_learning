@@ -1,14 +1,14 @@
 # Understanding **Asyncio**
 
-## <u>Understanding `asyncio.Futures`</u>
+## <u>Understanding `asyncio.Future`</u>
 
-### <u>Operations happening in `asyncio.Futures.__init__`</u>
+### <u>Operations happening in `asyncio.Future.__init__`</u>
 - Signature: `__init__(self,*,loop = None)`
 - Initializes following:
     - `self._loop` -> events.get_event_loop() if loop is not None else loop
     -  `self._callbacks` = []
 
-### <u>Operations happening in `asyncio.Futures.__scheduled_callbacks`</u>
+### <u>Operations happening in `asyncio.Future.__scheduled_callbacks`</u>
 - Signature `__scheduled_callbacks(self)`
 - Operations happening:
     - makes a copy of `self._callbacks` -> `callbacks = self._callbacks[:] `
@@ -16,7 +16,7 @@
     - **ELSE**:
         - iterates over `callbacks` and scheduleds on event loop using `_loop.call_soon(callback,self, ctx)
 
-### <u>Operations happenig in `asyncio.Futures.set_result`</u>
+### <u>Operations happenig in `asyncio.Future.set_result`</u>
 - Signature: `set_result(self, result)`
 - Operation happening:
     - Checks **IF** `._state!=PENDING`:
@@ -26,7 +26,7 @@
         - sets `self._state = _FINISHED`
         - <span style="color:pink">SCHEDULES</span> `.__scheduled_callbacks()`
 
-### <u>Operations happening in `asyncio.Futures.set_exception`</u>
+### <u>Operations happening in `asyncio.Future.set_exception`</u>
 - Signature: `set_exception(self, exception)`
 - Operations happening:
     - Checks **IF** `._state!=PENDING`:
@@ -39,7 +39,7 @@
         - sets `self._exception_tb = exception.__traceback__`
         - <span style="color:pink">SCHEDULES</span> `.__scheduled_callbacks()`
 
-### <u>Operations happening in `asyncio.Futures.cancel`</u>
+### <u>Operations happening in `asyncio.Future.cancel`</u>
 - Signature: `cancel(self,msg = None)`
 - Operations happening:
     - Checks **IF** `self._state != _PENDING`:
@@ -50,7 +50,7 @@
         - <span style="color:pink">SCHEDULES</span> `.__scheduled_callbacks()`
         - returns `TRUE`
 
-### <u>Operations happening in `asyncio.Futures.result`</u>
+### <u>Operations happening in `asyncio.Future.result`</u>
 - Signature: `result(self)`
 - Operations happening:
     - **IF** `self._state == CANCELLED`:
@@ -61,7 +61,7 @@
         - return `self._result`
 
 
-### <u>Operations happening in `asyncio.Futures.add_callbacks`</u>
+### <u>Operations happening in `asyncio.Future.add_callbacks`</u>
 - Signature: `add_callbacks(self,fn,*,context = None)`
 - Operations happening:
     - **IF** `self._state != PENDING`:
@@ -70,19 +70,19 @@
         - appends the `fn` to `self._callbacks`
 
 
-### <u>Operations happening in `asyncio.Futures.remove_callbacks`</u>
+### <u>Operations happening in `asyncio.Future.remove_callbacks`</u>
 - Signature: `remove_callback(self, function)`
 - Operations happening:
     - remove `function` from `self._callbacks`
 
-### <u>Operations happening in `asyncio.Futures.__await__`</u>
+### <u>Operations happening in `asyncio.Future.__await__`</u>
 - Signature: `__await__(self)`:
 - Operations happening:
     - **IF** `not self.done()`:
         - `self._asyncio_future_blocking = True
         - yield self
     - **IF** `not self.done()`:
-        - <span style="color:red">raises `RuntimeError("await wasn't used with future")`</span>
+        - <font color="red">raises `RuntimeError("await wasn't used with future")`</font>
     - return `self.result()`
 
 ### <u>`__iter__ == __await__`</u>
