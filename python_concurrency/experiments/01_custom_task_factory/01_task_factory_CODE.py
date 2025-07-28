@@ -1,4 +1,3 @@
-"""      THIS IS TASK FROM asyncio.tasks.Task with print statements            """
 import asyncio 
 from asyncio import tasks as t
 from asyncio import futures, coroutines, base_tasks, exceptions
@@ -242,7 +241,7 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
                 # We use the `send` method directly, because coroutines
                 # don't have `__iter__` and `__next__` methods.
                 result = coro.send(None)
-                print(f'\033[38;5;10m[INFO] [__step_run_and_handle_result] [{result = !r}], [{result._asyncio_future_blocking = !r}]\033[0m')
+                print(f'\033[38;5;10m[INFO] [__step_run_and_handle_result] [{result = !r}], [{getattr(result,'_asyncio_future_blocking',"NOT FOUND") = !r}]\033[0m')
             else:
                 result = coro.throw(exc)
         except StopIteration as exc:
@@ -265,7 +264,7 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
             print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [BaseException = {exc!r}]\033[0m')
             super().set_exception(exc)
         else:
-            print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [try-else] [{result = !r }]\033[0m')
+            print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [try-else] [{result = !r }],[{result._asyncio_future_blocking = !r}]\033[0m')
             blocking = getattr(result, '_asyncio_future_blocking', None)
             print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [try-else] [{blocking = !r}]\033[0m')
             if blocking is not None:
@@ -342,18 +341,28 @@ def task_factory(loop, coro,name = None):
     return Task(coro = coro, loop = loop, name = None)
 
 async def first():
-    print("======== FIRST ===================")
-    await asyncio.sleep(.5)
-    print('========= SECOND =========================')
-    await asyncio.sleep(.10)
-    print('=========================== THIRD =================')
+    print("======== FIRST.FIRST ===================")
+    await asyncio.sleep(4)
+    print('========= FIRST.SECOND =========================')
+    await asyncio.sleep(.3)
+    print('=========================== FIRST.THIRD =================')
     await asyncio.sleep(.10)
     print('========== END ===========')
+
+async def second():
+    print("======== SECOND.FIRST ===================")
+    await asyncio.sleep(.5)
+    print('========= SECOND.SECOND =========================')
+    await asyncio.sleep(0)
+    print('=========================== SECOND.THIRD =================')
+    await asyncio.sleep(.10)
+    print('========== END ===========')
+
 
 async def main():
     loop = asyncio.get_event_loop()
 
     loop.set_task_factory(task_factory)
-    await asyncio.gather(first())
+    await asyncio.gather(first(),second())
 
 asyncio.run(main())
