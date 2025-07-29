@@ -4,6 +4,14 @@ from asyncio import futures, coroutines, base_tasks, exceptions
 from types import GenericAlias 
 import inspect
 import contextvars
+import pathlib
+
+from .logger import LogColors, get_logger
+
+
+logger = None
+
+
 
 
 
@@ -36,6 +44,7 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
 
     def __init__(self, coro, *, loop=None, name=None, context=None,
                  eager_start=False):
+        logger.info({"msg": "__init__ initalized"})
         super().__init__(loop=loop)
         if self._source_traceback:
             del self._source_traceback[-1]
@@ -54,6 +63,7 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
         self._must_cancel = False
         self._fut_waiter = None
         self._coro = coro
+        self._fut_count = 0
         if context is None:
             self._context = contextvars.copy_context()
         else:
@@ -62,8 +72,9 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
         if eager_start and self._loop.is_running():
             self.__eager_start()
         else:
-            print(f'\033[38;5;10m[INFO] [in if]\033[0m')
-            self._loop.call_soon(self.__step, context=self._context)
+            logger.info({"msg": 'self.__step scheduled on EVENT_LOOP in __init__','vars': {'task_name': self._name}})
+            self._loop.call_soon(self.__step, None, '__init__',context=self._context)
+            logger.info({"msg": "__init__ after scheduling __step on EVENT_LOOP using loop.call_soon","vars":{"task_name":self._name}})
             t._register_task(self)
 
     def __del__(self):
@@ -215,44 +226,69 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
                 else:
                     t._register_task(self)
 
-    def __step(self, exc=None,*,sent_from = ''):
-        print(f'\033[38;5;14m[INFO] [__step] [{exc = !r}], [{sent_from = !r}]\033[0m')
+    def __step(self, exc=None,sent_from = ''):
+        logger.info({"msg": 'Entered self.__step',"method_signature": "__step(self, exc = None)", "vars": {"task_name" 
+                                                            : self._name,  "exc" : repr(exc), "sent_from": repr(sent_from)}})
         if self.done():
+            logger.error({"msg": f'task_name = {self._name} is already done so raising InvalidStateError','vars': {"task_name": self._name}})
             raise exceptions.InvalidStateError(
                 f'_step(): already done: {self!r}, {exc!r}')
         if self._must_cancel:
             if not isinstance(exc, exceptions.CancelledError):
                 exc = self._make_cancelled_error()
             self._must_cancel = False
+        logger.info({"msg": "will initalized self._fut_waiter value",'vars': {"task_name": self._name}})
         self._fut_waiter = None
+        logger.info({"msg": "initalized self._fut_waiter to None",'vars': {"task_name": self._name}})
+
 
         t._enter_task(self._loop, self)
         try:
+            logger.info({"msg": "`try` of try-finally in `self.__step`. Call to __step_run_and_handle_request in next line.",'vars': {"task_name": self._name}})
             self.__step_run_and_handle_result(exc)
+            logger.info({"msg": "`try` of try-finally in `self.__step`. After __step_run_and_handle_result",'vars': {"task_name": self._name}})
+        except BaseException as e:
+            logger.error({"msg": 'try-finally in `self.__step` exception encountered','vars': {"exc_caught": repr(e),"task_name": self._name}})
+            raise e
         finally:
+            logger.info({"msg": "`finally` of try-finally in `self.__step`. Call to _leave_task next and then set self to None",'vars': {"task_name": self._name}})
             t._leave_task(self._loop, self)
+            task_name = self._name
             self = None  # Needed to break cycles when an exception occurs.
+            logger.info({"msg": f"`finally` of try-finally in `self.__step`.{task_name} set to none","vars": {"task_name": task_name}})
 
     def __step_run_and_handle_result(self, exc):
-        print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result],[{exc = !r}]\033[0m')
+        logger.info({"msg": "__step_run_and_handle_request entered","method_signature":"__step_run_and_handle_result(self, exc)",
+               "vars": {"task_name": self._name, "exc": repr(exc)}})
         coro = self._coro
         try:
             if exc is None:
                 # We use the `send` method directly, because coroutines
                 # don't have `__iter__` and `__next__` methods.
+                logger.info({"msg":"`__step_run_and_hanle_result` main try-except exc is None so `coro.send()` in next line."
+                            ,'vars': {"task_name": self._name}})
                 result = coro.send(None)
-                print(f'\033[38;5;10m[INFO] [__step_run_and_handle_result] [{result = !r}], [{getattr(result,'_asyncio_future_blocking',"NOT FOUND") = !r}]\033[0m')
+                logger.info({"msg:": "__step_run_and_handle_result main try-except after `coro.send()`",
+                       "vars": {"result": repr(result), "result._asyncio_future_blocking": getattr(result,'_asyncio_future_blocking',"NOT FOUND")}
+                                ,'vars': {"task_name": self._name}})
             else:
+                logger.info({"msg": "exc is not None. coro.throw(exc) next", 'vars': {"exc":repr(exc)
+                            ,'vars': {"task_name": self._name}}})
                 result = coro.throw(exc)
+                logger.info({"msg": "exc is not None. coro.throw(exc) next", 'vars': {"exc":repr(exc)
+                            ,'vars': {"task_name": self._name}}})
         except StopIteration as exc:
             if self._must_cancel:
-                print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [{self._must_cancel = }]\033[0m')
+                logger.info({"msg": "__step_run_and_handle_result StopIteration and self._must_cancel is True",'vars': {"task_name": self._name}})
                 # Task is cancelled right before coro stops.
                 self._must_cancel = False
                 super().cancel(msg=self._cancel_message)
+                logger.info({"msg": "called super().cancel()",'vars': {"task_name": self._name}})
             else:
-                print(f'\033[38;5;12m[INFO] [__step_run_and_handle_result] [{exc.value = !r}]\033[0m')
+                logger.info({"msg": "__step_run_and_handle_result StopIteration encountered but the task is not cancelled."
+                             ,'vars': {"task_name": self._name, "exc.value": repr(exc.value)}})
                 super().set_result(exc.value)
+                logger.info({"msg": "super().set_result(exc.value)",'vars': {"task_name": self._name}})
         except exceptions.CancelledError as exc:
             # Save the original exception so we can chain it later.
             self._cancelled_exc = exc
@@ -261,12 +297,17 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
             super().set_exception(exc)
             raise
         except BaseException as exc:
-            print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [BaseException = {exc!r}]\033[0m')
+            logger.info({"msg": "BaseExcpetion encountered. And call super().set_exception(exc)"
+                         ,'vars': {"task_name": self._name, "exception": repr(exc)}})
             super().set_exception(exc)
         else:
-            print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [try-else] [{result = !r }],[{result._asyncio_future_blocking = !r}]\033[0m')
+            if result is not None:
+                self._fut_count += 1
+                result._fut_name = f'{self._name}: name: {self._fut_count}'
+            logger.info({"msg": "try-else in __step_run_and_handle_result" ,'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None), 
+                                "result": repr(result), "is_asyncio_future_blocking": f'{getattr(result,"_asyncio_future_blocking", None)= !r}'}})
             blocking = getattr(result, '_asyncio_future_blocking', None)
-            print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [try-else] [{blocking = !r}]\033[0m')
+            logger.info({"msg":"is_future blocking",'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None),'is_future_blocking': blocking}})
             if blocking is not None:
                 # Yielded Future must come from Future.__iter__().
                 if futures._get_loop(result) is not self._loop:
@@ -283,12 +324,19 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
                             self.__step, new_exc, context=self._context)
                     else:
                         result._asyncio_future_blocking = False
-                        print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [add_done_call_back] [{result =!r}]\033[0m')
+                        logger.info({"msg": "scheduling on EVENT_LOOP callback to fututre.add_done_call_back",
+                                     'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None),'result': repr(result)}})
                         result.add_done_callback(
                             self.__wakeup, context=self._context)
-                        print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [_fut_waiter] [{result =!r}]\033[0m')
+                        logger.info({"msg" : "After scheduling callbacks to fut. self._future_wait = result",
+                                     'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None),
+                                            "result": repr(result),'self._fut_waiter': self._fut_waiter,
+                                            "future_callbacks_list(fut._callbacks)": repr(result._callbacks)}})
                         self._fut_waiter = result
-                        print(f'\033[38;5;14m[INFO] [__step_run_and_handle_result] [_fut_waiter] [{self._fut_waiter =!r}]\033[0m')
+                        logger.info({"msg":"self._fut_waiter set to result",
+                                     'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None),
+                                        'self._fut_waiter': repr(result)}})
+                        
                         if self._must_cancel:
                             if self._fut_waiter.cancel(
                                     msg=self._cancel_message):
@@ -302,7 +350,8 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
 
             elif result is None:
                 # Bare yield relinquishes control for one event loop iteration.
-                self._loop.call_soon(self.__step, context=self._context)
+                logger.info({"msg": "result is None. Scheduling on EVENT_LOOP self.__step",'vars': {"task_name": self._name, "future_name": getattr(result,'_fut_name',None)}})
+                self._loop.call_soon(self.__step, None,'__step_run_and_handle_result',context=self._context)
             elif inspect.isgenerator(result):
                 # Yielding a generator is just wrong.
                 new_exc = RuntimeError(
@@ -316,16 +365,24 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
                 self._loop.call_soon(
                     self.__step, new_exc, context=self._context)
         finally:
+            logger.info({"msg": "self finally set to None",'vars': {"task_name": self._name}})
             self = None  # Needed to break cycles when an exception occurs.
 
+
     def __wakeup(self, future):
+        logger.info({"msg": '__wakeup entered','vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None)}})
         try:
+            logger.info({"msg": "will call future.result()",'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None)}})
             future.result()
-            print(f'\033[38;5;11m[INFO] [__wakeup] [{future._state = !r}]\033[0m')
+            logger.info({'msg':'__wakeup after future.result()',
+                   'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None),'future._state':future._state}})
         except BaseException as exc:
             # This may also be a cancellation.
-            print(f'\033[38;5;11m[INFO] [__wakeup] [{future._state = !r}] [{exc = !r}]\033[0m')
+            logger.error({"msg":"__wakeup error when future.result().calling __step with exc",'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None),
+                                                                    'exc': repr(exc)}})
             self.__step(exc,sent_from = '_wakeup._BaseException')
+            logger.info({"msg": "after sending __step with exception",
+                         'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None)},'exc': repr(exc)})
         else:
             # Don't pass the value of `future.result()` explicitly,
             # as `Future.__iter__` and `Future.__await__` don't need it.
@@ -333,36 +390,22 @@ class Task(futures._PyFuture):  # Inherit Python Task implementation
             # Python eval loop would use `.send(value)` method call,
             # instead of `__next__()`, which is slower for futures
             # that return non-generator iterators from their `__iter__`.
+            logger.info({'msg': '__wakeup not issue when called. calling again __step with no exc. I guess StopIteration will be raised',
+                         'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None)}})
             self.__step(sent_from  = '_wakeup._else')
+        logger.info({"msg": "end of __wakeup. set self = None",'vars': {"task_name": self._name, "future_name": getattr(future,'_fut_name',None)}})
         self = None  # Needed to break cycles when an exception occurs.
+        
 
-def task_factory(loop, coro,name = None):
-    print(f'\033[38;5;9m[INFO] [LOOP INITIALIZED] [{loop = !r}, {name = !r}]\033[0m')
-    return Task(coro = coro, loop = loop, name = None)
+def task_factory(loop, coro, name = None):
+    global logger 
+    logger = get_logger("tasks_debug", color_mapping = {
+                                    "__init__": LogColors.PINK,
+                                    "__wakeup": LogColors.YELLOW, "__step": LogColors.RED,
+                                    "__step_run_and_handle_result": LogColors.GREEN
+                                                },fh = True, file_name=task_factory.__file_path__)
+    name = name or f'Custom-task-{f'Task-{t._task_name_counter()}'}'
+    logger.info({"msg": "initalizing task", "vars": {"loop": repr(loop), 
+                            "coro": repr(coro), 'task_name': name}})
+    return Task(coro = coro, loop = loop, name = name)
 
-async def first():
-    print("======== FIRST.FIRST ===================")
-    await asyncio.sleep(4)
-    print('========= FIRST.SECOND =========================')
-    await asyncio.sleep(.3)
-    print('=========================== FIRST.THIRD =================')
-    await asyncio.sleep(.10)
-    print('========== END ===========')
-
-async def second():
-    print("======== SECOND.FIRST ===================")
-    await asyncio.sleep(.5)
-    print('========= SECOND.SECOND =========================')
-    await asyncio.sleep(0)
-    print('=========================== SECOND.THIRD =================')
-    await asyncio.sleep(.10)
-    print('========== END ===========')
-
-
-async def main():
-    loop = asyncio.get_event_loop()
-
-    loop.set_task_factory(task_factory)
-    await asyncio.gather(first(),second())
-
-asyncio.run(main())
