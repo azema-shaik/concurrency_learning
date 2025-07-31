@@ -28,7 +28,7 @@ class ColorFormatter(logging.Formatter):
 
 class JSONFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord):
-        return json.dumps({"datetime": datetime.fromtimestamp(record.created).strftime("%Y-%m-%d %I:%M:%S %p"),
+        return json.dumps({"datetime": datetime.fromtimestamp(record.created).strftime("%Y-%m-%d %I:%M:%S %f %p"),
                 "level":record.levelname, "func_name": record.funcName, "lineno": record.lineno,
                 "filename": record.filename,"msg":record.msg} )
 

@@ -1,0 +1,213 @@
+{
+ "tasks_noawaits.log": {
+  "NO_AWAITABLE": [
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282"
+  ]
+ },
+ "tasks_one_async_one_await.log": {
+  "Custom-task-Task-1: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "NO_AWAITABLE": [
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282"
+  ]
+ },
+ "tasks_three_async_three_awaits.log": {
+  "Custom-task-Task-1: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-2: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-3: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "No future": [
+   "__step_run_and_handle_result_357",
+   "__step_run_and_handle_result_357"
+  ],
+  "Custom-task-Task-2: name: 2": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-3: name: 2": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "NO_AWAITABLE": [
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282"
+  ],
+  "Custom-task-Task-1: name: 2": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-1: name: 3": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ]
+ },
+ "tasks_two_async_one_await.log": {
+  "Custom-task-Task-1: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-2: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "NO_AWAITABLE": [
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282"
+  ]
+ },
+ "tasks_two_async_two_awaits.log": {
+  "Custom-task-Task-1: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-2: name: 1": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "Custom-task-Task-2: name: 2": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ],
+  "NO_AWAITABLE": [
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282",
+   "__step_run_and_handle_result_282"
+  ],
+  "Custom-task-Task-1: name: 2": [
+   "__step_run_and_handle_result_310",
+   "__step_run_and_handle_result_313",
+   "__step_run_and_handle_result_330",
+   "__step_run_and_handle_result_335",
+   "__step_run_and_handle_result_340",
+   "__wakeup_377",
+   "__wakeup_380",
+   "__wakeup_382",
+   "__wakeup_398",
+   "__wakeup_401"
+  ]
+ }
+}
