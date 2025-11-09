@@ -1,0 +1,86 @@
+{"datetime": "2025-09-18 10:16:20 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: '20a4b7ab-bcf6-42df-94ca-39e51db24cad'"}
+{"datetime": "2025-09-18 10:16:20 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: 20a4b7ab-bcf6-42df-94ca-39e51db24cad"}
+{"datetime": "2025-09-18 10:21:46 PM", "level": "DEBUG", "func_name": "__init__", "lineno": 631, "filename": "proactor_events.py", "msg": "Using proactor: %s"}
+{"datetime": "2025-09-18 10:21:46 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 919, "filename": "base_events.py", "msg": "Get address info %s"}
+{"datetime": "2025-09-18 10:21:46 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 929, "filename": "base_events.py", "msg": "Getting address info None:8000, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_PASSIVE: 1> took 0.534ms: [(<AddressFamily.AF_INET6: 23>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('::', 8000, 0, 0)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('0.0.0.0', 8000))]"}
+{"datetime": "2025-09-18 10:21:46 PM", "level": "INFO", "func_name": "create_server", "lineno": 1653, "filename": "base_events.py", "msg": "%r is serving"}
+{"datetime": "2025-09-18 10:22:34 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-18 10:22:34 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [18/Sep/2025:22:22:34 +0530] \"POST / HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-18 10:22:43 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-18 10:22:43 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [18/Sep/2025:22:22:43 +0530] \"POST /batch HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-18 10:22:47 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-18 10:22:55 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-18 10:22:55 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [18/Sep/2025:22:22:55 +0530] \"POST /batch HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:31:26 PM", "level": "DEBUG", "func_name": "__init__", "lineno": 631, "filename": "proactor_events.py", "msg": "Using proactor: %s"}
+{"datetime": "2025-09-19 09:31:26 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 919, "filename": "base_events.py", "msg": "Get address info %s"}
+{"datetime": "2025-09-19 09:31:26 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 929, "filename": "base_events.py", "msg": "Getting address info None:8000, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_PASSIVE: 1> took 0.305ms: [(<AddressFamily.AF_INET6: 23>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('::', 8000, 0, 0)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('0.0.0.0', 8000))]"}
+{"datetime": "2025-09-19 09:31:26 PM", "level": "INFO", "func_name": "create_server", "lineno": 1653, "filename": "base_events.py", "msg": "%r is serving"}
+{"datetime": "2025-09-19 09:32:58 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:32:58 PM", "level": "INFO", "func_name": "batch_response", "lineno": 42, "filename": "server.py", "msg": "'9' queried!"}
+{"datetime": "2025-09-19 09:32:58 PM", "level": "DEBUG", "func_name": "batch_response", "lineno": 45, "filename": "server.py", "msg": "batch_response acquired lock"}
+{"datetime": "2025-09-19 09:32:58 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:32:58 +0530] \"POST /status/9 HTTP/1.1\" 404 184 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:37:44 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:37:44 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:37:44 +0530] \"POST /batch HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:38:11 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:38:11 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:38:11 +0530] \"POST /batch HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:38:11 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:38:37 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:38:37 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: 'b77b3dec-00a0-4350-b747-96a039180a83'"}
+{"datetime": "2025-09-19 09:38:37 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: b77b3dec-00a0-4350-b747-96a039180a83"}
+{"datetime": "2025-09-19 09:38:37 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:38:37 +0530] \"POST /batch/ HTTP/1.1\" 202 258 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:38:38 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:38:38 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:38:38 +0530] \"POST /status/%7Bdata%5B%22id%22%5D%7D HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:38:38 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:38:38 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:38:59 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:38:59 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: 'bfa7a543-25f9-4c15-9069-0cd7b65ad141'"}
+{"datetime": "2025-09-19 09:38:59 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: bfa7a543-25f9-4c15-9069-0cd7b65ad141"}
+{"datetime": "2025-09-19 09:38:59 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:38:59 +0530] \"POST /batch/ HTTP/1.1\" 202 255 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:39:01 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:39:01 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:39:01 +0530] \"POST /status/%7Bdata%5B%22id%22%5D%7D HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:39:01 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:39:01 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:39:37 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:39:37 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: 'f3662b82-1d95-494b-9681-1bff447504e8'"}
+{"datetime": "2025-09-19 09:39:37 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: f3662b82-1d95-494b-9681-1bff447504e8"}
+{"datetime": "2025-09-19 09:39:37 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:39:37 +0530] \"POST /batch/ HTTP/1.1\" 202 258 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:39:38 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:39:38 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:39:38 +0530] \"POST /status/%7Bdata%5B%22id%22%5D%7D/ HTTP/1.1\" 404 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:39:38 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:39:38 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:40:20 PM", "level": "DEBUG", "func_name": "close", "lineno": 748, "filename": "base_events.py", "msg": "Close %r"}
+{"datetime": "2025-09-19 09:40:24 PM", "level": "DEBUG", "func_name": "__init__", "lineno": 631, "filename": "proactor_events.py", "msg": "Using proactor: %s"}
+{"datetime": "2025-09-19 09:40:24 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 919, "filename": "base_events.py", "msg": "Get address info %s"}
+{"datetime": "2025-09-19 09:40:24 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 929, "filename": "base_events.py", "msg": "Getting address info None:8000, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_PASSIVE: 1> took 0.265ms: [(<AddressFamily.AF_INET6: 23>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('::', 8000, 0, 0)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('0.0.0.0', 8000))]"}
+{"datetime": "2025-09-19 09:40:24 PM", "level": "INFO", "func_name": "create_server", "lineno": 1653, "filename": "base_events.py", "msg": "%r is serving"}
+{"datetime": "2025-09-19 09:40:29 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:40:29 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: 'a4609304-b23b-416d-871a-1a818e8f3223'"}
+{"datetime": "2025-09-19 09:40:29 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: a4609304-b23b-416d-871a-1a818e8f3223"}
+{"datetime": "2025-09-19 09:40:29 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:40:29 +0530] \"POST /batch/ HTTP/1.1\" 202 258 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:40:33 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:40:33 PM", "level": "INFO", "func_name": "batch_response", "lineno": 42, "filename": "server.py", "msg": "'a4609304-b23b-416d-871a-1a818e8f3223' queried!"}
+{"datetime": "2025-09-19 09:40:33 PM", "level": "DEBUG", "func_name": "batch_response", "lineno": 45, "filename": "server.py", "msg": "batch_response acquired lock"}
+{"datetime": "2025-09-19 09:40:33 PM", "level": "ERROR", "func_name": "log_exception", "lineno": 481, "filename": "web_protocol.py", "msg": "Error handling request from %s"}
+{"datetime": "2025-09-19 09:40:34 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:40:33 +0530] \"POST /status/a4609304-b23b-416d-871a-1a818e8f3223/ HTTP/1.1\" 500 1589 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:40:34 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:41:15 PM", "level": "DEBUG", "func_name": "close", "lineno": 748, "filename": "base_events.py", "msg": "Close %r"}
+{"datetime": "2025-09-19 09:41:20 PM", "level": "DEBUG", "func_name": "__init__", "lineno": 631, "filename": "proactor_events.py", "msg": "Using proactor: %s"}
+{"datetime": "2025-09-19 09:41:20 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 919, "filename": "base_events.py", "msg": "Get address info %s"}
+{"datetime": "2025-09-19 09:41:20 PM", "level": "DEBUG", "func_name": "_getaddrinfo_debug", "lineno": 929, "filename": "base_events.py", "msg": "Getting address info None:8000, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_PASSIVE: 1> took 0.221ms: [(<AddressFamily.AF_INET6: 23>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('::', 8000, 0, 0)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 0, '', ('0.0.0.0', 8000))]"}
+{"datetime": "2025-09-19 09:41:20 PM", "level": "INFO", "func_name": "create_server", "lineno": 1653, "filename": "base_events.py", "msg": "%r is serving"}
+{"datetime": "2025-09-19 09:41:42 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:41:42 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 26, "filename": "server.py", "msg": "lock acquired by batch_request to process request id: 'ddd493a3-31b8-4813-abdf-0f2ded4bd894'"}
+{"datetime": "2025-09-19 09:41:42 PM", "level": "DEBUG", "func_name": "batch_request", "lineno": 30, "filename": "server.py", "msg": "lock released by batch_request for request id: ddd493a3-31b8-4813-abdf-0f2ded4bd894"}
+{"datetime": "2025-09-19 09:41:42 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:41:42 +0530] \"POST /batch/ HTTP/1.1\" 202 258 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "INFO", "func_name": "batch_response", "lineno": 42, "filename": "server.py", "msg": "'ddd493a3-31b8-4813-abdf-0f2ded4bd894' queried!"}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "DEBUG", "func_name": "batch_response", "lineno": 45, "filename": "server.py", "msg": "batch_response acquired lock"}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:41:44 +0530] \"POST /status/ddd493a3-31b8-4813-abdf-0f2ded4bd894/ HTTP/1.1\" 200 175 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:41:44 PM", "level": "DEBUG", "func_name": "_eof_received", "lineno": 237, "filename": "proactor_events.py", "msg": "%r received EOF"}
+{"datetime": "2025-09-19 09:42:33 PM", "level": "DEBUG", "func_name": "loop", "lineno": 845, "filename": "proactor_events.py", "msg": "%r got a new connection from %r: %r"}
+{"datetime": "2025-09-19 09:42:33 PM", "level": "INFO", "func_name": "batch_response", "lineno": 42, "filename": "server.py", "msg": "'ddd493a3-31b8-4813-abdf-0f2ded4bd894' queried!"}
+{"datetime": "2025-09-19 09:42:33 PM", "level": "DEBUG", "func_name": "batch_response", "lineno": 45, "filename": "server.py", "msg": "batch_response acquired lock"}
+{"datetime": "2025-09-19 09:42:33 PM", "level": "DEBUG", "func_name": "batch_response", "lineno": 52, "filename": "server.py", "msg": "batch_response acquired lock again"}
+{"datetime": "2025-09-19 09:42:33 PM", "level": "INFO", "func_name": "log", "lineno": 214, "filename": "web_log.py", "msg": "::1 [19/Sep/2025:21:42:33 +0530] \"POST /status/ddd493a3-31b8-4813-abdf-0f2ded4bd894/ HTTP/1.1\" 200 226 \"-\" \"python-requests/2.32.5\""}
+{"datetime": "2025-09-19 09:58:01 PM", "level": "DEBUG", "func_name": "close", "lineno": 748, "filename": "base_events.py", "msg": "Close %r"}
